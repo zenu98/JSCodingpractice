@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(s){
+    let answer=0;
+    for(let i of s){
+     //방법1 if(i === i.toUpperCase()) answer++;
+     //방법2 charCodeAt : 문자열을 아스키코드로 변환, 대문자의 아스키코드는 65~90
+            let a = i.charCodeAt();
+            if(a >= 65 && a <= 90) answer++;
+    }
+
+
+
+    return answer;
+  }
+
+  let str="KoreaTimeGood";
+  console.log(solution(str));
+
+
+</script>
+</body>
+</html>
