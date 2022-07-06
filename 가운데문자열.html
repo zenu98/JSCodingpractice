@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(s){
+    let answer="";
+    if(s.length % 2 === 0){
+      answer = s.substr((s.length/2)-1,2);
+    }
+    else{
+      let a = Math.floor(s.length/2);
+      answer = s.substring(a,a+1)
+    }
+
+    return answer;
+  }
+  let str="study";
+  let string="banana"
+  console.log(solution(str));
+  console.log(solution(string));
+
+
+
+</script>
+</body>
+</html>
