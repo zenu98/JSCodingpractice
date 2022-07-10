@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
 </head>
 <body>
-$END$
+<script>
+  function solution(a){
+    let n = a.length;
+    let answer = Array.from({length:n},() => 1); // 길이가 n이고 모든 배열을 1로 초기화
+    for(let i = 0 ; i < n ; i++)
+        for(let j = 0 ; j < n ; j++){
+            if(a[i]<a[j]) answer[i]++;
+        }
+
+
+    return answer;
+  }
+  let arr=[87, 89, 92, 100, 76, 92];
+  console.log(solution(arr));
+</script>
 </body>
 </html>
