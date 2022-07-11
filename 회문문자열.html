@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(str){
+    let answer="Yes";
+    let s = str.toLowerCase();
+    let n = s.length
+    for(let i = 0; i < Math.floor(n/2) ; i++){ // Math.floor 소수점 이하 버리기
+      if(s[i]!==s[n-i-1]) answer="No";
+
+    }
+    return answer;
+  }
+
+  function solutionTwo(str){
+    let answer="Yes";
+    let s = str.toLowerCase();
+    if(s.split('').reverse().join('')!==s) answer="No";  // reverse메소드는 배열일때만 가능해서 split메소드로 문자열을 배열화시켜
+                                                         // 뒤집고 다시 배열에서 문자열로 돌리기 위해 join을 사용하여 비교
+
+    return answer;
+  }
+
+
+  let str="asdndsa";
+  console.log(solution(str));
+  console.log(solutionTwo(str));
+</script>
+</body>
+</html>
