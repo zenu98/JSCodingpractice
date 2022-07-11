@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+
+  function solution(str){
+    let answer="Yes";
+    let s = str.toLowerCase().replace(/[^a-z]/g,''); // 정규식 '영어알파벳 소문자가 아닌 모든 것을 찾는다.
+    if(s.split('').reverse().join('')!==s) return "No";
+
+    return answer;
+  }
+
+
+  let str="found7, time: study; Yduts; emit, 7Dnuof";
+
+  console.log(solution(str));
+
+</script>
+</body>
+</html>
