@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function solution(str){
+    let s = str.replace(/[^0-9]/g,'');
+    s = parseInt(s);  // 정수형으로 변환
+    return s;
+  }
+
+  function solutionTwo(str){
+    let answer="";
+    for(let x of str){
+      if(!isNaN(x)) answer+=x;  // is Not a Number 숫자인지 판별하는 함수 !isNaN이면 숫자일때 true 반환
+    }
+    return parseInt(answer);
+  }
+
+  let str="g0en2T1230s8eSoft"
+  console.log(solution(str));
+  console.log(solutionTwo(str));
+
+
+
+
+</script>
+</body>
+</html>
