@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(s){
+    let answer;
+    let max = Number.MIN_SAFE_INTEGER;
+    for(let a of s){
+      let num = 0,tmp=a;
+
+      // 각 자리 숫자 합
+      /*
+      while(tmp){
+        num += (tmp%10);
+        tmp = Math.floor(tmp/10);
+      }
+      */
+      // 내장함수 사용 a를 문자화 시키고 배열화 시키고 누산기로 누적
+      num = a.toString().split('').reduce((a,b)=>a+=Number(b),0);
+
+      if(num > max) {
+        max = num;
+        answer = a;
+      }
+      else if(num === max){
+        if(a>answer) answer = a;
+      }
+    }
+    return answer;
+  }
+  let arr=[128, 460, 603, 40, 521, 137, 123];
+  console.log(solution(arr));
+
+</script>
+</body>
+</html>
