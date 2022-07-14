@@ -5,6 +5,8 @@
 </head>
 <body>
 <script>
+
+
   function solution(s, t){
     let answer=[];
     let p=1000;
@@ -29,8 +31,46 @@
     return answer;
   }
 
+  //내가 푼 방식
+  function solutionTwo(s, t){
+    let arr=[],arr2=[];
+    let num=0;
+    let min = Number.MAX_SAFE_INTEGER;
+    let answer="";
+
+    // str문자열의 인덱스를 저장 할 배열
+    for(let a in s){
+      arr2.push(a);
+    }
+
+    // str문자열에서 'e'문자의 인덱스만 저장 할 배열
+    while(true){
+      let pos = s.indexOf(t,num);
+      if(pos == -1) break;
+      arr.push(pos);
+      num = pos + 1;
+    }
+
+    // 각 문자의 인덱스와 'e'문자의 인덱스를 빼서 거리값을 비교
+    for(let i = 0; i<arr2.length ; i++){
+      min=Number.MAX_SAFE_INTEGER;
+      for(let j = 0; j<arr.length ; j++){
+        if(Math.abs(arr2[i]-arr[j]) < min){
+          min = Math.abs(arr2[i]-arr[j]);
+        }
+      }
+      answer+=min;
+    }
+
+    return answer;
+  }
+
   let str="teachermode";
+  console.log(solutionTwo(str, 'e'));
   console.log(solution(str, 'e'));
+
+
+
 </script>
 </body>
 </html>
