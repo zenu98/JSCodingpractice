@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(arr,n){
+    let a = arr.length;
+    let answer=[];
+    let result;
+    for(let i = 0; i<a; i++){
+        for(let j=i+1 ; j<a;j++){
+            for(let k=j+1; k<a;k++){
+                answer.push(arr[i]+arr[j]+arr[k]);
+            }
+        }
+    }
+    let set = new Set(answer);  // 중복 제거
+    set = [...set];  // 전개연산자로 배열화
+    set.sort((a,b)=>(b-a)); // 오름차순정렬
+    result=set[n-1];
+
+    return result;
+  }
+
+  function solutionTwo(n, k, card){
+      let answer;
+      let tmp = new Set();
+      for(let i=0; i<n; i++){
+          for(let j=i+1; j<n; j++){
+              for(let k=j+1; k<n; k++){
+                  tmp.add(card[i]+card[j]+card[k]); // add() 메서드는 Set 개체의 맨 뒤에 주어진 value의 새 요소를 추가합니다.
+              }
+          }
+      }
+      let a=Array.from(tmp).sort((a, b)=>b-a); // Array.from()을 통해 유사배열객체나 반복가능객체를 얉은복사하여 새로운 배열객체 생성
+      answer=a[k-1];                           // 유사배열객체 : length속성과 index요소를 가지는 객체
+      return answer;                           // 반복가능객체 : 배열을 일반화한 객체 ex)Map,Set
+  }
+
+  let arr=[13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+  console.log(solution(arr,3));
+  console.log(solutionTwo(10,3,arr));
+</script>
+</body>
+</html>
