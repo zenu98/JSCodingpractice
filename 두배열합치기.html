@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+
+  /*
+  sort()의 시간복잡도는 O(nlog(n))으로 비효율적임
+
+  function solution(a,b){
+   a.push(...b);
+   a.sort((a,b)=>a-b);
+   console.log(a);
+  }
+  */
+
+  // Two Pointers Algorithm
+  function solution(a,b){
+    let answer = [];
+    let n = a.length;
+    let m = b.length;
+    let p1=0, p2 = p1;
+    while(p1 < n && p2<m){
+        if(a[p1]<=b[p2]) answer.push(a[p1++]) // a[p1]을 삽입하고 p1을 1증가 (후위연산자)
+        else answer.push(b[p2++]);
+    }
+    while(p1<n) answer.push(arr1[p1++]);
+    while(p2<n) answer.push(arr1[p2++]);
+
+    return answer;
+  }
+
+
+  let arr1=[1, 3, 5];
+  let arr2=[2, 3, 6, 7, 9];
+  console.log(solution(arr1,arr2));
+</script>
+</body>
+</html>
