@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(str){
+    let cnt1=0, cnt2=cnt1;
+    let answer="";
+    for(let i =0; i < str.length ; i++){
+      if(str[i]=="(") cnt1++;
+      else cnt2++;
+    }
+    if(cnt1-cnt2==0) answer="Yes";
+    else answer="No";
+
+    return answer;
+  }
+  function solutionTwo(s){
+    let answer="YES";
+    let stack=[];
+    for(let x of s){
+      if(x==='(') stack.push(x);
+      else{
+        if(stack.length===0) return "NO";
+        stack.pop();
+      }
+    }
+    if(stack.length>0) return "NO";
+    return answer;
+  }
+  let str="(()(()))(()";
+  console.log(solution(str));
+  console.log(solutionTwo(str));
+</script>
+</body>
+</html>
