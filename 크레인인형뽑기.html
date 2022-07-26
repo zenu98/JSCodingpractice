@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(b,m){
+    let answer=0;
+    let stack=[];
+    let count=-1;
+
+    for(let a of m) {
+        a-=1;
+      for (let i = 0; i < b.length; i++) {
+        if (b[i][a] !== 0) {
+          stack.push(b[i][a]);
+          count++;
+
+          if(stack[count]==stack[count-1]){
+              stack.pop();
+              stack.pop();
+              count-=2;
+              answer+=2;
+          }
+          b[i][a] = 0;
+          break;
+        }
+      }
+    }
+
+    console.log(stack);
+    return answer;
+
+  }
+
+  function solutionTwo(board, moves){
+      let answer=0;
+      let stack=[];
+      moves.forEach(pos => {
+          for(let i=0; i<board.length; i++){
+              if(board[i][pos-1]!==0){
+                  let tmp=board[i][pos-1];
+                  board[i][pos-1]=0;
+                  if(tmp===stack[stack.length-1]){
+                      stack.pop();
+                      answer+=2;
+                  }
+                  else stack.push(tmp);
+                  break;
+              }
+          }
+      });
+
+      return answer;
+  }
+  let board=[[0,0,0,0,0],
+             [0,0,1,0,3],
+             [0,2,5,0,1],
+             [4,2,4,4,2],
+             [3,5,1,3,1]];
+
+  let moves=[1,5,3,5,1,2,1,4];
+  console.log(solution(board,moves));
+
+</script>
+
+</body>
+</html>
