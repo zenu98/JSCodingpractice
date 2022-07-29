@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
 </head>
 <body>
-$END$
+<script>
+  function solution(arr){
+
+    for(let i = 0; i<arr.length; i++){
+      let a = i;
+      for(let j = i+1; j<arr.length; j++){
+        if(arr[j]<arr[a]) a=j;
+      }
+      [arr[i],arr[a]] = [arr[a], arr[i]]; //구조분해할당
+    }
+    return arr;
+  }
+  let arr=[13, 5, 11, 7, 23, 15];
+  console.log(solution(arr));
+</script>
+
 </body>
 </html>
