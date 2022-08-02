@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(a){
+  let answer=a;
+  for(let i = 1; i<a.length; i++){
+    let tmp=a[i];
+    let j;
+    for(j=i-1; j>=0; j--){
+      if(a[j]>tmp) a[j+1] = a[j];
+      else break;
+    }
+    a[j+1] = tmp;
+  }
+  return answer;
+  }
+
+  let arr=[11, 7, 5, 6, 10, 9,21,13];
+
+  console.log(solution(arr));
+
+</script>
+</body>
+</html>
