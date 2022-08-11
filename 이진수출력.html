@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(a){
+    let answer="";
+    function abc(a){
+      if(a==0) return;
+      else{
+        abc(Math.floor(a/2));
+        answer+=a%2;
+      }
+
+    }
+    abc(a);
+    return answer;
+  }
+  console.log(solution(17));
+</script>
+</body>
+</html>
