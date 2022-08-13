@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(v){
+    let answer;
+    function PREDFS(v){     //전위순회
+      if(v>7) return;
+      else{
+        console.log(v);
+        PREDFS(v*2);
+        PREDFS(v*2+1);
+      }
+
+    }
+    function IDFS(v){      //중위순회
+      if(v>7) return;
+      else{
+        IDFS(v*2);
+        console.log(v);
+        IDFS(v*2+1);
+      }
+
+    }
+    function POSTDFS(v){
+      if(v>7) return;
+      else{
+        POSTDFS(v*2);
+        POSTDFS(v*2+1);
+        console.log(v);
+      }
+
+    }
+    PREDFS(1);
+    IDFS(1);
+    POSTDFS(1);
+
+    return answer;
+  }
+  console.log(solution(1));
+</script>
+</body>
+</html>
