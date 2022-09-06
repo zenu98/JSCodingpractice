@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function solution(lottos, win_nums) {
+    let answer = [];
+    let best = 7-((lottos.filter(x => x===0)).length+lottos.filter(x => win_nums.includes(x)).length);
+    let worst = 7-lottos.filter(x => win_nums.includes(x)).length;
+    if(worst===7) worst=6;
+    answer.push(best,worst);
+
+    return answer;
+  }
+  let lottos=[44, 1, 0, 0, 31, 25];
+  let win_nums=[31, 10, 45, 1, 6, 19];
+  console.log(solution(lottos,win_nums));
+</script>
+</body>
+</html>
