@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function solution(nums) {
+    let answer = 0;
+    let h = new Map();
+    for(let i of nums){
+      if(h.has(i)) h.set(i,h.get(i)+1)
+      else h.set(i,1);
+    }
+    if(nums.length/2<=h.size) answer += nums.length/2;
+    else answer+= h.size;
+    return answer;
+  }
+  let arr=[3,3,2,3,2,4];
+  console.log(solution(arr));
+</script>
+</body>
+</html>
