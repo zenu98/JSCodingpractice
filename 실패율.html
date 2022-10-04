@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function solution(N, stages) {
+
+    let arr = Array.from({length:N+2},x=>0);
+    let cnt = stages.length;
+    let tmp=[];
+    let answer=[];
+    let arr2 = [];
+    for(let i=0; i<stages.length;i++){
+      arr[stages[i]]++;
+    }
+
+    for(let i=1; i<arr.length-1; i++){
+      cnt -= arr[i-1];
+      tmp.push(arr[i] / cnt,i)
+      arr2.push(tmp);
+      tmp=[];
+    }
+    arr2.sort((a, b) => {
+      if (a[0] === b[0]) {
+        return a[1] - b[1]
+      } else {
+        return b[0] - a[0]
+      }
+    })
+
+    for(let i=0; i<arr2.length; i++){
+      answer.push(arr2[i][1]);
+    }
+    return answer;
+  }
+  let stages = [2, 1, 2, 6, 2, 4, 3, 3];
+  console.log(solution(5,stages));
+</script>
+</body>
+</html>
