@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function solution(n, words) {
+        let answer = [0,0];
+        let arr=Array.from({length:n});
+        let arr2 = [];
+        arr[0] = words[0];
+        arr2[0] = words[0];
+
+        for(let i=1; i<words.length;i++){
+            arr[i%n] = words[i];
+
+            if(arr[(i-1)%n][(arr[(i-1)%n].length)-1] !== arr[i%n][0]){
+                answer[0]=i%n+1;
+                answer[1]=(Math.floor(i/n)+1);
+                break;
+            }
+
+            if(arr2.includes(words[i])){
+                answer[0]=(i%n+1);
+                answer[1]=(Math.floor(i/n)+1);
+                break;
+            }
+            else if(arr2.push(words[i]));
+
+        }
+        return answer;
+    }
+  let words1=	["tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank"];
+  let words2= ["hello", "observe", "effect", "take", "either", "recognize", "encourage", "ensure", "establish", "hang", "gather", "refer", "reference", "estimate", "executive"];
+  let words3= ["hello", "one", "even", "never", "now", "world", "draw"];
+  console.log(solution(3,words1));
+</script>
+</body>
+</html>
