@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function solution(id_list, report, k) {
+    let answer = Array.from({length:id_list.length},x=>0);
+    let report_list = {};
+
+    id_list.map((a)=>{
+      report_list[a] = [];
+    })
+    report.map((user)=>{
+      const [user_id, report_id] = user.split(' ')
+      if(!report_list[report_id].includes(user_id)){
+        report_list[report_id].push(user_id)
+      }
+    })
+
+    for(let i in report_list){
+      if(report_list[i].length>=k){
+        report_list[i].map((a)=>{
+          answer[id_list.indexOf(a)]++;
+        })
+      }
+    }
+    return answer;
+  }
+
+  let id_list=["muzi", "frodo", "apeach", "neo"];
+  let report = ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"];
+  let k = 2;
+
+
+  console.log(solution(id_list, report, k));
+</script>
+</body>
+</html
