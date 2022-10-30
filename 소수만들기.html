@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function solution(nums) {
+    let answer = 0;
+    let tmp=Array.from({length:3},()=>0);
+    let n = nums.length;
+    let m = 3;
+    let sum=0;
+    function DFS(L,s){
+      if(L===m ){
+        if(isPrime(sum)) answer++;
+      }
+      else{
+        for(let i=s; i<=n-1; i++){
+          tmp[L]=nums[i];
+          sum += tmp[L];
+          DFS(L+1,i+1);
+          sum -= tmp[L];
+        }
+      }
+    }
+    DFS(0,0);
+
+    return answer;
+  }
+  const isPrime = (n) => {
+    for (let i = 2; i <= Math.ceil(Math.sqrt(n)); i++) {
+      if (n % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+  let nums=[1,2,7,6,4];
+  console.log(solution(nums));
+
+</script>
+</body>
+</html>
