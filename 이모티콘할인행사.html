@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      function solution(users, emoticons) {
+        let answer = [0, 0];
+        let sum = 0;
+        let all = [];
+        let arr = [];
+        let count = 0;
+        let sumTemp = 0;
+        let n = emoticons.length;
+        const sale = [10, 20, 30, 40];
+        function DFS(L, arr) {
+          if (L === n) {
+            all.push([...arr]);
+          } else {
+            for (let i = 0; i < sale.length; i++) {
+              arr[L] = sale[i];
+              DFS(L + 1, arr);
+            }
+          }
+        }
+        DFS(0, arr);
+        all.forEach((item) => {
+          for (let j = 0; j < users.length; j++) {
+            sum = 0;
+            for (let k = 0; k < item.length; k++) {
+              if (item[k] >= users[j][0]) {
+                sum += emoticons[k] * ((100 - item[k]) / 100);
+                if (sum >= users[j][1]) {
+                  sum = 0;
+                  count++;
+                  break;
+                }
+              }
+            }
+            sumTemp += sum;
+          }
+
+          if (answer[0] < count) {
+            answer[0] = count;
+            answer[1] = sumTemp;
+          } else if (answer[0] === count) {
+            if (answer[1] < sumTemp) {
+              answer[1] = sumTemp;
+            }
+          }
+
+          count = 0;
+          sumTemp = 0;
+        });
+
+        return answer;
+      }
+      let users = [
+        [40, 10000],
+        [25, 10000],
+      ];
+      let emoticons = [7000, 9000];
+      console.log(solution(users, emoticons));
+    </script>
+  </body>
+</html>
