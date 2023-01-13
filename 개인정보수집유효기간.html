@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      function solution(today, terms, privacies) {
+        let answer = [];
+        let b = new Date(today);
+
+        let plan = privacies.map((item) => item.split(" "));
+        let termsArr = terms.map((item) => item.split(" "));
+
+        for (let i = 0; i < plan.length; i++) {
+          for (let j = 0; j < termsArr.length; j++) {
+            if (plan[i][1] === termsArr[j][0]) {
+              let a = new Date(plan[i][0]);
+
+              a.setMonth(+a.getMonth() + +termsArr[j][1]);
+              console.log(a);
+
+              if (a <= b) {
+                answer.push(i + 1);
+              }
+            }
+          }
+        }
+        return answer;
+      }
+      let today = "2022.05.19";
+      let terms = ["A 6", "B 12", "C 3"];
+      let privacies = [
+        "2021.05.02 A",
+        "2021.07.01 B",
+        "2022.02.19 C",
+        "2022.02.20 C",
+      ];
+      console.log(solution(today, terms, privacies));
+    </script>
+  </body>
+</html>
