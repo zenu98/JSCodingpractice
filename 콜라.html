@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b, n) {
+        let answer = 0;
+
+        while (n >= a) {
+          answer += Math.floor(n / a) * b;
+          n = n - a * Math.floor(n / a) + Math.floor(n / a) * b;
+        }
+
+        return answer;
+      }
+      console.log(solution(5, 3, 21));
+    </script>
+  </body>
+</html>
